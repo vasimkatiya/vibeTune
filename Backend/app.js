@@ -8,9 +8,16 @@ const { authHandler } = require('./middleware/auth');
 const albumRouter = require('./routes/album.routes');
 const songRouter = require('./routes/song.routes');
 const likeRouter = require('./routes/likes.routes');
-dns.setServers(["1.1.1.1","8.8.8.8"])
+const cors = require('cors')
+
+dns.setServers(["1.1.1.1","8.8.8.8"]);
 
 const app = express();
+
+app.use(cors({
+  origin:"http://localhost:5173",
+  credentials:true
+}));
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));

@@ -6,6 +6,16 @@ import Login from './auth/Login.jsx'
 import Home from './Home/Home.jsx'
 import { useState } from 'react'
 import RefreshHandler from './config/RefreshHandler.jsx'
+import Navbar from './components/Navbar.jsx'
+import Albums from './albums/Albums.jsx'
+import Likes from './Likes/Likes.jsx'
+import Profile from './profile/Profile.jsx'
+import AddAlbum from './components/AddAlbum.jsx'
+import AddSong from './components/AddSong.jsx'
+import MyAlbums from './albums/MyAlbums.jsx'
+import MySongs from './Home/MySongs.jsx'
+import AllAlbums from './albums/AllAlbums.jsx'
+import AllSongs from './Home/AllSongs.jsx'
 
 const App = () => {
 
@@ -17,14 +27,26 @@ const App = () => {
 
   return (
     <>
+    <Navbar />
       <Toaster position='top' />
       <RefreshHandler setisAuth={setIsAuth} />
-      <Routes>
+     <main>
+       <Routes>
         <Route path='/' element={<Login />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/home' element={protectRoutes(<Home />)} />
+        <Route path='/albums' element={protectRoutes(<Albums/>)} />
+        <Route path='/likes' element={protectRoutes(<Likes />)} />
+        <Route path='/profile' element={protectRoutes(<Profile />)} />
+        <Route path='/add_album' element={protectRoutes(<AddAlbum/>)} />
+        <Route path='/add_song' element={protectRoutes(<AddSong/>)} />
+        <Route path='/myalbums' element={protectRoutes(<MyAlbums/>)} />
+        <Route path='/mysongs' element={protectRoutes(<MySongs />)} />
+        <Route path='/all_albums' element={protectRoutes(<AllAlbums/>)} />
+        <Route path='/all_songs' element={protectRoutes(<AllSongs />)} />
       </Routes>
+     </main>
     </>
   )
 }

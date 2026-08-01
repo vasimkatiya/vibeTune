@@ -4,15 +4,19 @@ import { errorToast } from "../config/tostifyConfig.js";
 import { Link, useNavigate } from "react-router-dom";
 
 
-const Login = () => {
+const Login = ({setrole}) => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const [load, setload] = useState(false)
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    setload(true);
 
     try {
       if (!email || !password) {
@@ -27,16 +31,21 @@ const Login = () => {
       console.log(res.data);
 
       localStorage.setItem("token",res.data.token);
+      localStorage.setItem('role',res.data.user.role);
+      setrole(localStorage.getItem('role'));
 
       setEmail("");
       setPassword("");
 
+      setload(false)
       navigate('/home');
 
     } catch (error) {
       errorToast(
         error.response?.data?.message || error.message || "Something went wrong."
       );
+    }finally{
+        setload(false)
     }
   };
 
@@ -66,7 +75,7 @@ const Login = () => {
           required
         />
 
-        <button type="submit">login</button>
+        <button type="submit">{load ? 'loading':'login'}</button>
       </form>
       <p>
       if you don't have an account ? <Link className="auth-nav" to='/signup' >signup</Link>

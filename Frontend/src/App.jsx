@@ -20,21 +20,21 @@ import AllSongs from './Home/AllSongs.jsx'
 const App = () => {
 
   const [IsAuth, setIsAuth] = useState(false)
-
+  const [role, setrole] = useState(null);
   const protectRoutes = (element)=>{
     return IsAuth ? element : <Navigate to="/login" />
   }
 
   return (
     <>
-    <Navbar />
+    <Navbar role={role} />
       <Toaster position='top' />
       <RefreshHandler setisAuth={setIsAuth} />
      <main>
        <Routes>
-        <Route path='/' element={<Login />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/signup' element={<Signup />} />
+        <Route path='/' element={<Login setrole={setrole} />} />
+        <Route path='/login' element={<Login setrole={setrole} />} />
+        <Route path='/signup' element={<Signup setrole={setrole} />} />
         <Route path='/home' element={protectRoutes(<Home />)} />
         <Route path='/albums' element={protectRoutes(<Albums/>)} />
         <Route path='/likes' element={protectRoutes(<Likes />)} />

@@ -4,11 +4,13 @@ import { errorToast } from "../config/tostifyConfig.js";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 
 
-const Signup = () => {
+const Signup = ({ setrole }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
+
+  const [load, setload] = useState(false);
 
   const navigate = useNavigate();
 
@@ -16,6 +18,7 @@ const Signup = () => {
     e.preventDefault();
 
     try {
+        setload(true);
       if (!name || !email || !password || !role) {
         return errorToast("Fill all the fields.");
       }
@@ -30,6 +33,7 @@ const Signup = () => {
       console.log(res.data);
 
       localStorage.setItem('role',res.data.newUser.role);
+      setrole(localStorage.getItem('role'));
 
       setName("");
       setEmail("");
@@ -38,11 +42,14 @@ const Signup = () => {
 
       navigate('/login');
 
+      setload(false)
 
     } catch (error) {
       errorToast(
         error.response?.data?.message || error.message || "Something went wrong."
       );
+    }finally{
+        setload(false)
     }
   };
 
@@ -94,7 +101,7 @@ const Signup = () => {
           <option value="creator">Creator</option>
         </select>
 
-        <button type="submit">Sign Up</button>
+        <button type="submit">{load ? 'loading' : 'Sign Up'}</button>
       </form>
       <p>
       if you already have an account ? <Link className="auth-nav" to="/login" >login</Link>

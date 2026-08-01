@@ -57,7 +57,7 @@ exports.loginController = async (req,res)=>{
             })
         }
         
-        const findUser = await userModel.findOne({email}).select('password');
+        const findUser = await userModel.findOne({email}).select('password role');
 
         if(!findUser){
             return res.status(404).json({
@@ -75,10 +75,10 @@ exports.loginController = async (req,res)=>{
 
         const token = jwt.sign({id:findUser._id},process.env.JWT);
 
-       res.cookie("token", token, {
+        res.cookie("token", token, {
         httpOnly: true,
-        secure: true,
-        sameSite: "none"
+        secure: false, // Set to true if using HTTPS
+        sameSite: "lax"
         });
 
         res.status(200).json({

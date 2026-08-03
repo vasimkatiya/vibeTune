@@ -79,8 +79,8 @@ exports.loginController = async (req, res) => {
 
         res.cookie("token", token, {
             httpOnly: true,
-            secure: false, // Set to true if using HTTPS
-            sameSite: "lax"
+            secure: true,
+            sameSite: "none"
         });
 
         res.status(200).json({

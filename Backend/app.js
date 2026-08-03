@@ -1,7 +1,6 @@
 const express = require('express');
 const connectDB = require('./database/connection');
 require('dotenv').config();
-const dns = require('dns');
 const cookieParser = require('cookie-parser');
 const authRouter = require('./routes/auth.routes');
 const { authHandler } = require('./middleware/auth');
@@ -10,12 +9,12 @@ const songRouter = require('./routes/song.routes');
 const likeRouter = require('./routes/likes.routes');
 const cors = require('cors')
 
-dns.setServers(["1.1.1.1","8.8.8.8"]);
+
 
 const app = express();
 
 app.use(cors({
-  origin:"https://vibe-tune-omega.vercel.app/",
+  origin:"https://vibe-tune-omega.vercel.app",
   credentials:true
 }));
 

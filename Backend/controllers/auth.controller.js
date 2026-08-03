@@ -3,87 +3,89 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
-exports.registerController = async (req,res)=>{
+exports.registerController = async (req, res) => {
     try {
-        
-        const {name,email,password,role} = req?.body;
 
-        if(!name ||!email || !password || !role)
-        {
+        const { name, email, password, role } = req?.body;
+
+        if (!name || !email || !password || !role) {
             return res.status(400).json({
-                message:'bad request.'
+                message: 'bad request.'
             })
         }
 
-        const existsUser = await userModel.findOne({email});
+        const existsUser = await userModel.findOne({ email });
 
-        if(existsUser){
+        if (existsUser) {
             return res.status(400).json({
-                message:'user already exists.'
+                message: 'user already exists.'
             })
         }
 
-        const hashPassword = await bcrypt.hash(password,10);
+        const hashPassword = await bcrypt.hash(password, 10);
 
         const newUser = await userModel.create({
             name,
             email,
-            password:hashPassword,
+            password: hashPassword,
             role,
         });
 
         res.status(201).json({
-            message:'user register successfully.',
+            message: 'user register successfully.',
             newUser,
         })
 
     } catch (error) {
         console.log(error);
         res.status(500).json({
-            message:'internal server error.'
+            message: 'internal server error.'
         })
     }
 }
 
 
-exports.loginController = async (req,res)=>{
+exports.loginController = async (req, res) => {
     try {
 
-        const {email,password} = req?.body;
+        const { email, password } = req?.body;
 
-        if(!email || !password){
+        if (!email || !password) {
             return res.status(400).json({
-                message:'bad request'
+                message: 'bad request'
             })
         }
-        
-        const findUser = await userModel.findOne({email}).select('password role');
 
-        if(!findUser){
+        const findUser = await userModel.findOne({ email }).select('password role');
+
+        if (!findUser) {
             return res.status(404).json({
-                message:"user not found."
+                message: "user not found."
             })
         }
 
-        const comparePassword = await bcrypt.compare(password,findUser.password);
+        const comparePassword = await bcrypt.compare(password, findUser.password);
 
-        if(!comparePassword){
+        if (!comparePassword) {
             return res.status(400).json({
-                message:'inncorrect password.'
+                message: 'inncorrect password.'
             })
         }
 
-        const token = jwt.sign({id:findUser._id},process.env.JWT);
+        const token = jwt.sign(
+            { id: findUser._id, role: findUser.role },
+            process.env.JWT
+        );
 
         res.cookie("token", token, {
-        httpOnly: true,
-        secure: false, // Set to true if using HTTPS
-        sameSite: "lax"
+            httpOnly: true,
+            secure: false, // Set to true if using HTTPS
+            sameSite: "lax"
         });
 
         res.status(200).json({
-            message:'login successfully.',
-            user:findUser,
+            message: 'login successfully.',
+            user: findUser,
             token
         });
 
@@ -91,56 +93,59 @@ exports.loginController = async (req,res)=>{
     } catch (error) {
         console.log(error);
         res.status(500).json({
-            message:'internal server error.'
+            message: 'internal server error.'
         })
     }
 }
 
 
-exports.logoutController = async (req,res)=>{
+exports.logoutController = async (req, res) => {
     try {
 
         const token = req?.cookies.token;
 
-        if(!token){
+        if (!token) {
             return res.status(404).json({
-                message:'token not found.'
+                message: 'token not found.'
             })
         }
 
         res.clearCookie('token');
 
         res.status(200).json({
-            message:'logout successfully.'
+            message: 'logout successfully.'
         });
-        
+
     } catch (error) {
         console.log(error);
         res.status(500).json({
-            message:'internal server error.'
+            message: 'internal server error.'
         })
     }
 }
 
 
-exports.profileController = async (req,res)=>{
+exports.profileController = async (req, res) => {
     try {
         const userid = req.user?.id;
 
-        if(!userid){
+        if (!userid) {
             return res.status(403).json({
-                message:'unauthorized.'
+                message: 'unauthorized.'
             })
         }
 
-        const user = await userModel.findOne({_id:userid}).select("-password");
+        const user = await userModel.findOne({ _id: userid }).select("-password");
 
         res.status(200).json({
-            message:'profile access',
-            user:user,
+            message: 'profile access',
+            user: user,
         })
 
     } catch (error) {
         console.log(error)
+        res.status(500).json({
+            message: 'internal server error.'
+        })
     }
 }

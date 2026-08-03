@@ -1,0 +1,32 @@
+
+.app{
+    display: flex;
+    flex-direction: row;
+}
+
+.con > h3{
+    text-align: center;
+    text-transform: capitalize;
+    color: white;
+    padding: 0.7rem;
+}
+
+main{
+    position: relative;
+    width: 80vw;
+    height: auto;
+    left: 230px;
+    top: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    main{
+        top: 100px;
+        left: 50px;
+        width: 100vw;
+        height: auto;
+    }
+}

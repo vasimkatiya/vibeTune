@@ -1,20 +1,21 @@
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import { useContext } from 'react';
+import { searchContext } from '../Context/SearchContext.jsx';
 import api from '../config/axiosConfig';
 import { FaHeart } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa";
 import { errorToast,successToast } from '../config/tostifyConfig';
-import './home.css'
 
-const Home = () => {
+
+const SearchResults = () => {
 
   const [data, setdata] = useState([]);
-  const [page, setpage] = useState(1);
 
   const [likes, setlikes] = useState([]);
 
-
+const { searchResults } = useContext(searchContext);
   
 
 async function likeToggle(songId) {
@@ -43,7 +44,6 @@ async function likeToggle(songId) {
   }
 }
 
-
   useEffect(() => {
   const fetchLikes = async () => {
     try {
@@ -57,55 +57,12 @@ async function likeToggle(songId) {
   fetchLikes();
 }, [likes]);
 
-  useEffect(() => {
-
-    const fetchData = async () => {
-
-      try{
-        const res = await api.get(`/songs/all?page=${page}&limit=10`);
-        setdata( (prev) =>{
-                    const merged = [...prev, ...res.data.songs];
-
-
-          const uniqueSongs = merged.filter(
-            (song, index, self) =>
-              index === self.findIndex((a) => a._id === song._id)
-          );
-
-          return uniqueSongs;
-        });
-        
-        console.log(page);
-      }catch(error){
-        console.log(error);
-      }
-
-    }
-
-    fetchData();
-
-  }, [page]);
-  
-  useEffect(() => {
-      const handleScroll = () => {
-        if (window.innerHeight + document.documentElement.scrollTop >= document.documentElement.scrollHeight) {
-          setpage(prevPage => prevPage + 1);
-        }
-      };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
   return (
     <>
     <div className="song-con">
-      <h2>all Songs</h2>
+      <h2>Search Results</h2>
       <div className="songs">
-        {data && data?.map((song)=>{
+        {searchResults.songs && searchResults.songs?.map((song)=>{
           return (
             <div className="song" key={song._id}>
               <img src={song.img} alt="" />
@@ -126,4 +83,4 @@ async function likeToggle(songId) {
   )
 }
 
-export default Home
+export default SearchResults;

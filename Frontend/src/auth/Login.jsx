@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import api from "../config/axiosConfig";
 import { errorToast } from "../config/tostifyConfig.js";
 import { Link, useNavigate } from "react-router-dom";
-
+import './form.css'
 
 const Login = ({setrole}) => {
 

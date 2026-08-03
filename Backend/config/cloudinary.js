@@ -12,7 +12,7 @@ const uploadAudio = (fileBuffer) => {
     const stream = cloudinary.uploader.upload_stream(
       {
         folder: "spotify/audio",
-        resource_type: "video", // audio files
+        resource_type: "auto", // audio files
       },
       (error, result) => {
         if (error) return reject(error);

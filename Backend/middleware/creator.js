@@ -6,10 +6,16 @@ exports.creatorHandler = async (req,res,next)=>{
     try {
         
         const userId = req?.user?.id;
+        const role = req?.user?.role;
 
+        if(!userId || !role){
+            return res.status(400).json({
+                message: 'user id or role is missing.'
+            })
+        }
         const user = await userModel.findOne({_id:userId});
 
-        if(user.role == "creator" || user.role == "admin"){
+        if(role == "creator" || role == "admin"){
             console.log('permission granted.');
             next();
         }

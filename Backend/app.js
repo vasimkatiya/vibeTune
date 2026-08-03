@@ -24,9 +24,9 @@ app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 
 app.use('/api/auth',authRouter);
-app.use('/api/albums',albumRouter);
-app.use('/api/songs',songRouter);
-app.use('/api/like',likeRouter);
+app.use('/api/albums',authHandler,albumRouter);
+app.use('/api/songs',authHandler,songRouter);
+app.use('/api/like',authHandler,likeRouter);
 
 app.listen(process.env.PORT || 3000 ,()=>{
     connectDB();

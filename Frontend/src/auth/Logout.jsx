@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import api from "../config/axios.config";
-import { successToast, errorToast } from "../config/toast.config";
+import api from "../config/axiosConfig";
+import { successToast, errorToast } from "../config/tostifyConfig";
 
 const Logout = () => {
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ const Logout = () => {
 
       successToast(res.data.message);
 
-      navigate("/");
+      navigate("/login");
     } catch (error) {
       errorToast(
         error.response?.data?.message || "Logout failed"

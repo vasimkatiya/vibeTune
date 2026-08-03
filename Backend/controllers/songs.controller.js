@@ -9,8 +9,17 @@ exports.createSongController = async (req, res) => {
         const name = req.body.name;
         const albumId = req?.body.album_id;
         const userId = req.user.id;
-        const image = req.files.image[0];
-        const audio = req.files.audio[0];
+console.log("FILES:", req.files);
+console.log("BODY:", req.body);
+
+if (!req.files || !req.files.image || !req.files.audio) {
+    return res.status(400).json({
+        message: "Image and audio files are required"
+    });
+}
+
+const image = req.files.image[0];
+const audio = req.files.audio[0];
 
 
         const exists = await songModel.findOne({ name });

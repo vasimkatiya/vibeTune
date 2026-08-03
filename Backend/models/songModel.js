@@ -21,7 +21,6 @@ const songSchema = new mongoose.Schema({
     album_id:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'album',
-        required:true
     }
 },{timestamps:true});
 

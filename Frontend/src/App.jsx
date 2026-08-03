@@ -16,6 +16,9 @@ import MyAlbums from './albums/MyAlbums.jsx'
 import MySongs from './Home/MySongs.jsx'
 import AllAlbums from './albums/AllAlbums.jsx'
 import AllSongs from './Home/AllSongs.jsx'
+import ViewAlbums from './albums/ViewAlbums.jsx'
+import SearchNav from './components/SearchNav.jsx'
+import SearchResults from './Home/SearchResults.jsx'
 
 const App = () => {
 
@@ -27,9 +30,12 @@ const App = () => {
 
   return (
     <>
-    <Navbar role={role} />
+    <RefreshHandler setisAuth={setIsAuth} />
+    <SearchNav />
+    <div className="app">
+
+    <Navbar role={role} setrole={setrole} />
       <Toaster position='top' />
-      <RefreshHandler setisAuth={setIsAuth} />
      <main>
        <Routes>
         <Route path='/' element={<Login setrole={setrole} />} />
@@ -45,8 +51,13 @@ const App = () => {
         <Route path='/mysongs' element={protectRoutes(<MySongs />)} />
         <Route path='/all_albums' element={protectRoutes(<AllAlbums/>)} />
         <Route path='/all_songs' element={protectRoutes(<AllSongs />)} />
+
+        <Route path='/albums/:id' element={protectRoutes(<ViewAlbums />)} />
+        <Route path='/search' element={protectRoutes(<SearchResults />)} />
+        <Route path='*' element={<h1>404 Not Found</h1>} />
       </Routes>
      </main>
+    </div>
     </>
   )
 }

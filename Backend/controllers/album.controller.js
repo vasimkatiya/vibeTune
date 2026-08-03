@@ -9,7 +9,7 @@ exports.createAlbumsController = async (req, res) => {
 
         const name = req.body.name;
         const userId = req.user.id;
-        const file = req.file;
+        const file = req?.file;
 
         const exists = await albumModel.findOne({ name, user_id: userId });
 
@@ -18,15 +18,18 @@ exports.createAlbumsController = async (req, res) => {
                 message: 'album already exists.'
             })
         }
-
-        const imageResult = await uploadImage(file.buffer);
+        let imageResult ;
+        if(file)
+        {
+             imageResult = await uploadImage(file.buffer);
+        }
 
         console.log('images result : : : ', imageResult)
 
         const newAlbum = await albumModel.create({
             name: name,
             user_id: userId,
-            img: imageResult.secure_url
+            img: imageResult?.secure_url
         });
 
         res.status(201).json({
@@ -106,63 +109,68 @@ exports.getAllAlbumsController = async (req, res) => {
 
 exports.deleteAlbumController = async (req, res) => {
     try {
-
-        const id = req?.params?.id;
-        const userId = req?.user?.id;
+        const id = req.params.id;
+        const userId = req.user.id;
 
         if (!id) {
             return res.status(400).json({
-                message: 'id is not present in url'
-            })
+                message: "Album id is required",
+            });
         }
 
         const user = await userModel.findById(userId);
 
-        if (user.role == "creator") {
-
-            const deletedAlbum = await albumModel.deleteOne({ _id: id, user_id: userId });
-
-            await songModel.updateMany(
-                { album_id: id },
-                {
-                    $set: { album_id: null }
-                }
-            );
-
-            return res.status(200).json({
-                message: 'creator delete a album',
-                deletedAlbum,
-            })
+        if (!user) {
+            return res.status(404).json({
+                message: "User not found",
+            });
         }
 
-        if (user.role == "admin") {
+        let deletedAlbum;
 
-            const deletedAlbum = await albumModel.deleteOne({ _id: id });
-            console.log(deletedAlbum);
-            await songModel.updateMany(
-                { album_id: id },
-                {
-                    $set: { album_id: null }
-                }
-            );
+        if (user.role === "creator") {
+            deletedAlbum = await albumModel.findOneAndDelete({
+                _id: id,
+                user_id: userId,
+            });
 
-            return res.status(200).json({
-                message: 'admin delete a album',
-                deletedAlbum,
-            })
+            if (!deletedAlbum) {
+                return res.status(404).json({
+                    message: "Album not found or you are not authorized to delete it",
+                });
+            }
+        } else if (user.role === "admin") {
+            deletedAlbum = await albumModel.findByIdAndDelete(id);
+
+            if (!deletedAlbum) {
+                return res.status(404).json({
+                    message: "Album not found",
+                });
+            }
+        } else {
+            return res.status(403).json({
+                message: "You are not authorized to delete this album",
+            });
         }
 
-        res.status(400).json({
-            message: 'creator can not delete others albums'
-        })
+        // Delete all songs related to this album
+        const deletedSongs = await songModel.deleteMany({
+            album_id: id,
+        });
 
+        return res.status(200).json({
+            message: "Album and related songs deleted successfully",
+            deletedAlbum,
+            deletedSongsCount: deletedSongs.deletedCount,
+        });
     } catch (error) {
-        console.log(error);
-        res.status(500).json({
-            message: 'internal server error.'
-        })
+        console.error(error);
+
+        return res.status(500).json({
+            message: "Internal server error",
+        });
     }
-}
+};
 
 exports.viewAlbumController = async (req, res) => {
     try {

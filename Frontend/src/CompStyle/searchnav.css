@@ -10,7 +10,7 @@
 .searchNav {
     position: fixed;
     top: 0;
-    left: 220px; /* Sidebar width */
+    left: 220px; 
     width: calc(100% - 220px);
     height: 60px;
     background: linear-gradient(135deg,#0f172a,#1e293b);
@@ -58,12 +58,11 @@
     background: #e63939;
 }
 
-/* Tablet */
 @media (max-width: 768px) {
     .searchNav {
         left: 0;
         width: 100%;
-        top: 60px; /* if your mobile navbar is 60px high */
+        top: 60px; 
         padding: 0 15px;
     }
 
@@ -72,7 +71,6 @@
     }
 }
 
-/* Mobile */
 @media (max-width: 480px) {
     .search-form input {
         font-size: 14px;

@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { errorToast, successToast } from "../config/tostifyConfig";
 import './view.css'
+import { useContext } from "react";
+import { playContext } from "../Context/PlaySongContext";
 
 const ViewAlbums = () => {
   const [likes, setLikes] = useState([]);
@@ -11,6 +13,7 @@ const ViewAlbums = () => {
 
   const { id } = useParams();
 
+  const {_,setcurrent} = useContext(playContext)
 
  
   useEffect(() => {
@@ -108,6 +111,9 @@ const ViewAlbums = () => {
           <div
             className="song"
             key={song._id}
+            onClick={()=>{
+              setcurrent(song._id);
+            }}
           >
 
             <img

@@ -7,6 +7,7 @@ import api from '../config/axiosConfig';
 import { FaHeart } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa";
 import { errorToast,successToast } from '../config/tostifyConfig';
+import { playContext } from '../Context/PlaySongContext.jsx';
 
 
 const SearchResults = () => {
@@ -14,6 +15,8 @@ const SearchResults = () => {
   const [data, setdata] = useState([]);
 
   const [likes, setlikes] = useState([]);
+
+  const {_,setcurrent} = useContext(playContext);
 
 const { searchResults } = useContext(searchContext);
   
@@ -64,7 +67,9 @@ async function likeToggle(songId) {
       <div className="songs">
         {searchResults.songs && searchResults.songs?.map((song)=>{
           return (
-            <div className="song" key={song._id}>
+            <div className="song" onClick={()=>{
+              setcurrent(song._id)
+            }} key={song._id}>
               <img src={song.img} alt="" />
               <div className="like-icon" onClick={() => likeToggle(song._id)}>
                 {likes.some((id) => id === song._id) ? (

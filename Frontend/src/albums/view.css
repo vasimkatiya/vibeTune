@@ -1,283 +1,275 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:"Poppins",sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
 
-body{
-    background:#090e19;
-}
-
-
-/* Main container */
-
-.container{
-
-    width:100%;
-
-    padding:30px;
-
+body {
+    background: #090e19;
 }
 
 
 
-/* Album top section */
+.container {
 
-.upper{
+    width: 100%;
 
-    width:100%;
+    padding: 30px;
 
-    display:flex;
+    padding-bottom: 6.3rem;
 
-    align-items:center;
+}
 
-    gap:30px;
 
-    background:linear-gradient(135deg,#0f172a,#1e293b);
 
-    padding:30px;
 
-    border-radius:25px;
+.upper {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 30px;
+
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+
+    padding: 30px;
+
+    border-radius: 25px;
 
     box-shadow:
-    0 10px 30px rgba(0,0,0,.35);
+        0 10px 30px rgba(0, 0, 0, .35);
 
-    margin-bottom:35px;
+    margin-bottom: 35px;
 
 }
 
 
-/* Album image */
 
-.img img{
+.img img {
 
-    width:220px;
+    width: 220px;
 
-    height:220px;
+    height: 220px;
 
-    object-fit:cover;
+    object-fit: cover;
 
-    border-radius:20px;
+    border-radius: 20px;
 
     box-shadow:
-    0 10px 25px rgba(0,0,0,.4);
+        0 10px 25px rgba(0, 0, 0, .4);
 
 }
 
 
 
-/* Album info */
 
-.info h2{
+.info h2 {
 
-    color:white;
+    color: white;
 
-    font-size:2.5rem;
+    font-size: 2.5rem;
 
-    text-transform:capitalize;
+    text-transform: capitalize;
 
-    font-weight:600;
-
-}
-
-
-.info p{
-
-    color:#94a3b8;
-
-    margin-top:10px;
-
-    font-size:1rem;
+    font-weight: 600;
 
 }
 
 
+.info p {
 
-/* Songs grid */
+    color: #94a3b8;
 
-.songs{
+    margin-top: 10px;
 
-    display:grid;
+    font-size: 1rem;
+
+}
+
+
+
+
+.songs {
+
+    display: grid;
 
     grid-template-columns:
-    repeat(auto-fill,minmax(200px,1fr));
+        repeat(auto-fill, minmax(200px, 1fr));
 
-    gap:25px;
+    gap: 25px;
 
 }
 
 
 
-/* Song card */
 
-.song{
+.song {
 
-    position:relative;
+    position: relative;
 
-    background:linear-gradient(135deg,#0f172a,#1e293b);
+    background: linear-gradient(135deg, #0f172a, #1e293b);
 
-    padding:15px;
+    padding: 15px;
 
-    border-radius:18px;
+    border-radius: 18px;
 
-    overflow:hidden;
+    overflow: hidden;
 
     box-shadow:
-    0 10px 30px rgba(0,0,0,.35);
+        0 10px 30px rgba(0, 0, 0, .35);
 
-    transition:.3s;
-
-}
-
-
-.song:hover{
-
-    transform:translateY(-5px);
+    transition: .3s;
 
 }
 
 
+.song:hover {
 
-/* Song image */
-
-.song img{
-
-    width:100%;
-
-    height:220px;
-
-    object-fit:cover;
-
-    border-radius:15px;
+    transform: translateY(-5px);
 
 }
 
 
 
-/* Song title */
 
-.song h4{
+.song img {
 
-    color:white;
+    width: 100%;
 
-    text-align:center;
+    height: 220px;
 
-    margin-top:12px;
+    object-fit: cover;
 
-    font-size:1rem;
-
-    font-weight:500;
-
-    text-transform:capitalize;
+    border-radius: 15px;
 
 }
 
 
 
-/* Like button */
 
-.like-icon{
+.song h4 {
 
-    position:absolute;
+    color: white;
 
-    right:25px;
+    text-align: center;
 
-    top:25px;
+    margin-top: 12px;
 
-    width:40px;
+    font-size: 1rem;
 
-    height:40px;
+    font-weight: 500;
 
-    border-radius:50%;
-
-    background:rgba(0,0,0,.55);
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    color:white;
-
-    font-size:22px;
-
-    cursor:pointer;
-
-    transition:.3s;
-
-}
-
-
-.like-icon:hover{
-
-    background:#2563eb;
-
-    transform:scale(1.1);
-
-}
-
-
-.like-icon svg{
-
-    color:#ef4444;
+    text-transform: capitalize;
 
 }
 
 
 
-/* Tablet */
 
-@media(max-width:768px){
+.like-icon {
 
-    .container{
+    position: absolute;
 
-        padding:20px;
+    right: 25px;
 
-                            position: absolute;
+    top: 25px;
 
-    left: -20px;
+    width: 40px;
 
-    top: 50px;
+    height: 40px;
+
+    border-radius: 50%;
+
+    background: rgba(0, 0, 0, .55);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    color: white;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+}
+
+
+.like-icon:hover {
+
+    background: #2563eb;
+
+    transform: scale(1.1);
+
+}
+
+
+.like-icon svg {
+
+    color: #ef4444;
+
+}
+
+
+
+
+@media(max-width:768px) {
+
+    .container {
+
+        padding: 20px;
+
+        position: absolute;
+
+        left: -20px;
+
+        top: 50px;
     }
 
 
-    .upper{
+    .upper {
 
-        flex-direction:column;
+        flex-direction: column;
 
-        text-align:center;
+        text-align: center;
 
-        padding:25px;
+        padding: 25px;
 
     }
 
 
-    .img img{
+    .img img {
 
-        width:180px;
+        width: 180px;
 
-        height:180px;
-
-    }
-
-
-    .info h2{
-
-        font-size:2rem;
+        height: 180px;
 
     }
 
 
-    .songs{
+    .info h2 {
+
+        font-size: 2rem;
+
+    }
+
+
+    .songs {
 
         grid-template-columns:
-        repeat(auto-fill,minmax(170px,1fr));
+            repeat(auto-fill, minmax(170px, 1fr));
 
-        gap:18px;
+        gap: 18px;
 
     }
 
@@ -285,88 +277,87 @@ body{
 
 
 
-/* Mobile */
 
-@media(max-width:480px){
+@media(max-width:480px) {
 
-    .container{
+    .container {
 
-        padding:15px;
+        padding: 15px;
 
-                            position: absolute;
+        position: absolute;
 
-    left: -20px;
+        left: -20px;
 
-    top: 50px;
-
-    }
-
-
-    .upper{
-
-        border-radius:18px;
+        top: 50px;
 
     }
 
 
-    .img img{
+    .upper {
 
-        width:150px;
-
-        height:150px;
+        border-radius: 18px;
 
     }
 
 
-    .info h2{
+    .img img {
 
-        font-size:1.5rem;
+        width: 150px;
+
+        height: 150px;
 
     }
 
 
-    .songs{
+    .info h2 {
+
+        font-size: 1.5rem;
+
+    }
+
+
+    .songs {
 
         grid-template-columns:
-        repeat(2,1fr);
+            repeat(2, 1fr);
 
-        gap:15px;
-
-    }
-
-
-    .song{
-
-        padding:10px;
+        gap: 15px;
 
     }
 
 
-    .song img{
+    .song {
 
-        height:150px;
-
-    }
-
-
-    .song h4{
-
-        font-size:.85rem;
+        padding: 10px;
 
     }
 
 
-    .like-icon{
+    .song img {
 
-        width:35px;
+        height: 150px;
 
-        height:35px;
+    }
 
-        right:18px;
 
-        top:18px;
+    .song h4 {
 
-        font-size:18px;
+        font-size: .85rem;
+
+    }
+
+
+    .like-icon {
+
+        width: 35px;
+
+        height: 35px;
+
+        right: 18px;
+
+        top: 18px;
+
+        font-size: 18px;
 
     }
 

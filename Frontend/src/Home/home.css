@@ -1,219 +1,212 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:"Poppins",sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
 
-body{
-    background:#090e19;
-}
-
-
-/* Main container */
-
-.song-con{
-
-    width:100%;
-
-    padding:30px;
-
+body {
+    background: #090e19;
 }
 
 
-/* Heading */
+.song-con {
 
-.song-con h2{
+    width: 100%;
 
-    color:white;
-
-    font-size:2rem;
-
-    text-transform:capitalize;
-
-    margin-bottom:25px;
-
-    font-weight:600;
+    padding: 30px;
 
 }
 
 
 
-/* Songs grid */
+.song-con h2 {
 
-.songs{
+    color: white;
 
-    display:grid;
+    font-size: 2rem;
+
+    text-transform: capitalize;
+
+    margin-bottom: 25px;
+
+    font-weight: 600;
+
+}
+
+
+
+
+.songs {
+
+    display: grid;
 
     grid-template-columns:
-    repeat(auto-fill,minmax(200px,1fr));
+        repeat(auto-fill, minmax(200px, 1fr));
 
-    gap:25px;
+    gap: 25px;
 
 }
 
 
 
-/* Song card */
 
-.song{
+.song {
 
-    position:relative;
+    position: relative;
 
-    background:linear-gradient(135deg,#0f172a,#1e293b);
+    background: linear-gradient(135deg, #0f172a, #1e293b);
 
-    border-radius:18px;
+    border-radius: 18px;
 
-    padding:15px;
+    cursor: pointer;
 
-    overflow:hidden;
+    padding: 15px;
+
+    overflow: hidden;
 
     box-shadow:
-    0 10px 30px rgba(0,0,0,.35);
+        0 10px 30px rgba(0, 0, 0, .35);
 
-    transition:.3s;
-
-}
-
-
-.song:hover{
-
-    transform:translateY(-5px);
+    transition: .3s;
 
 }
 
 
+.song:hover {
 
-/* Song image */
-
-.song img{
-
-    width:100%;
-
-    height:220px;
-
-    object-fit:cover;
-
-    border-radius:15px;
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(37, 99, 235, .25);;
 
 }
 
 
 
-/* Song name */
 
-.song h4{
+.song img {
 
-    color:white;
+    width: 100%;
 
-    margin-top:15px;
+    height: 220px;
 
-    font-size:1rem;
+    object-fit: cover;
 
-    font-weight:500;
-
-    text-align:center;
-
-    text-transform:capitalize;
+    border-radius: 15px;
 
 }
 
 
 
-/* Like button */
 
-.like-icon{
+.song h4 {
 
-    position:absolute;
+    color: white;
 
-    right:25px;
+    margin-top: 15px;
 
-    top:25px;
+    font-size: 1rem;
 
-    width:40px;
+    font-weight: 500;
 
-    height:40px;
+    text-align: center;
 
-    background:rgba(0,0,0,.55);
-
-    border-radius:50%;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    color:white;
-
-    font-size:22px;
-
-    cursor:pointer;
-
-    transition:.3s;
+    text-transform: capitalize;
 
 }
 
 
 
-.like-icon:hover{
 
-    background:#2563eb;
+.like-icon {
 
-    transform:scale(1.1);
+    position: absolute;
+
+    right: 25px;
+
+    top: 25px;
+
+    width: 40px;
+
+    height: 40px;
+
+    background: rgba(0, 0, 0, .55);
+
+    border-radius: 50%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    color: white;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    transition: .3s;
 
 }
 
 
-/* Filled heart */
 
-.like-icon svg{
+.like-icon:hover {
 
-    color:#ef4444;
+    background: #2563eb;
+
+    transform: scale(1.1);
 
 }
 
 
 
-/* Tablet */
+.like-icon svg {
 
-@media(max-width:768px){
+    color: #ef4444;
 
-    .song-con{
+}
 
-        padding:20px;
 
-            position: absolute;
 
-    left: -20px;
 
-    top: 50px;
+@media(max-width:768px) {
+
+    .song-con {
+
+        padding: 20px;
+
+        position: absolute;
+
+        left: -20px;
+
+        top: 50px;
 
     }
 
 
-    .song-con h2{
+    .song-con h2 {
 
-        font-size:1.7rem;
+        font-size: 1.7rem;
 
     }
 
 
-    .songs{
+    .songs {
 
         grid-template-columns:
-        repeat(auto-fill,minmax(170px,1fr));
+            repeat(auto-fill, minmax(170px, 1fr));
 
-        gap:18px;
+        gap: 18px;
 
     }
 
 
-    .song img{
+    .song img {
 
-        height:190px;
+        height: 190px;
 
     }
 
@@ -221,58 +214,57 @@ body{
 
 
 
-/* Mobile */
 
-@media(max-width:480px){
+@media(max-width:480px) {
 
-    .song-con{
+    .song-con {
 
-        padding:15px;
+        padding: 15px;
 
-            position: absolute;
+        position: absolute;
 
-    left: -20px;
+        left: -20px;
 
-    top: 50px;
+        top: 50px;
 
     }
 
 
-    .songs{
+    .songs {
 
         grid-template-columns:
-        repeat(2,1fr);
+            repeat(2, 1fr);
 
-        gap:15px;
-
-    }
-
-
-    .song img{
-
-        height:150px;
+        gap: 15px;
 
     }
 
 
-    .song h4{
+    .song img {
 
-        font-size:.9rem;
+        height: 150px;
 
     }
 
 
-    .like-icon{
+    .song h4 {
 
-        width:35px;
+        font-size: .9rem;
 
-        height:35px;
+    }
 
-        right:20px;
 
-        top:20px;
+    .like-icon {
 
-        font-size:18px;
+        width: 35px;
+
+        height: 35px;
+
+        right: 20px;
+
+        top: 20px;
+
+        font-size: 18px;
 
     }
 

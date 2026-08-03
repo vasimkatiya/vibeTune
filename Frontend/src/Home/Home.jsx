@@ -6,6 +6,8 @@ import { FaHeart } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa";
 import { errorToast,successToast } from '../config/tostifyConfig';
 import './home.css'
+import { useContext } from 'react';
+import { playContext } from '../Context/PlaySongContext';
 
 const Home = () => {
 
@@ -14,7 +16,7 @@ const Home = () => {
 
   const [likes, setlikes] = useState([]);
 
-
+  const {_,setcurrent} = useContext(playContext);
   
 
 async function likeToggle(songId) {
@@ -107,9 +109,13 @@ async function likeToggle(songId) {
       <div className="songs">
         {data && data?.map((song)=>{
           return (
-            <div className="song" key={song._id}>
+            <div className="song" onClick={()=>{
+              setcurrent(song._id);
+            }} key={song._id}>
               <img src={song.img} alt="" />
-              <div className="like-icon" onClick={() => likeToggle(song._id)}>
+              <div className="like-icon" onClick={(e) =>{
+                e.stopPropagation();
+                likeToggle(song._id)}}>
                 {likes.some((id) => id === song._id) ? (
                   <FaHeart/>
                 ) : (

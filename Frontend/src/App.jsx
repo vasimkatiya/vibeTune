@@ -19,11 +19,17 @@ import AllSongs from './Home/AllSongs.jsx'
 import ViewAlbums from './albums/ViewAlbums.jsx'
 import SearchNav from './components/SearchNav.jsx'
 import SearchResults from './Home/SearchResults.jsx'
+import MusicPlayer from './components/MusicPlayer.jsx'
+import { useContext } from 'react'
+import { playContext } from './Context/PlaySongContext.jsx'
 
 const App = () => {
 
   const [IsAuth, setIsAuth] = useState(false)
   const [role, setrole] = useState(null);
+
+  const {current} = useContext(playContext);
+
   const protectRoutes = (element)=>{
     return IsAuth ? element : <Navigate to="/login" />
   }
@@ -56,6 +62,7 @@ const App = () => {
         <Route path='/search' element={protectRoutes(<SearchResults />)} />
         <Route path='*' element={<h1>404 Not Found</h1>} />
       </Routes>
+      {current ? <MusicPlayer /> : <></>}
      </main>
     </div>
     </>

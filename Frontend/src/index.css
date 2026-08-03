@@ -11,6 +11,10 @@
     padding: 0.7rem;
 }
 
+body{
+    overflow-x: hidden;
+}
+
 main{
     position: relative;
     width: 80vw;

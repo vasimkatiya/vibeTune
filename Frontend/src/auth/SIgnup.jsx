@@ -42,7 +42,7 @@ const Signup = ({ setrole }) => {
 
       navigate('/login');
 
-      setload(false)
+      setload(false);
 
     } catch (error) {
       errorToast(

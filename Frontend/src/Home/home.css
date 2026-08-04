@@ -11,261 +11,153 @@ body {
     background: #090e19;
 }
 
-
 .song-con {
-
     width: 100%;
-
     padding: 30px;
-
+    padding-bottom: 6.3rem; /* keeps last row clear of the fixed .player bar */
 }
-
-
 
 .song-con h2 {
-
     color: white;
-
     font-size: 2rem;
-
     text-transform: capitalize;
-
     margin-bottom: 25px;
-
     font-weight: 600;
-
 }
-
-
-
 
 .songs {
-
     display: grid;
-
-    grid-template-columns:
-        repeat(auto-fill, minmax(200px, 1fr));
-
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 25px;
-
 }
-
-
-
 
 .song {
-
     position: relative;
-
     background: linear-gradient(135deg, #0f172a, #1e293b);
-
     border-radius: 18px;
-
     cursor: pointer;
-
     padding: 15px;
-
     overflow: hidden;
-
-    box-shadow:
-        0 10px 30px rgba(0, 0, 0, .35);
-
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
     transition: .3s;
-
 }
-
 
 .song:hover {
-
     transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(37, 99, 235, .25);;
-
+    box-shadow: 0 15px 40px rgba(37, 99, 235, .25);
 }
-
-
-
 
 .song img {
-
     width: 100%;
-
     height: 220px;
-
     object-fit: cover;
-
     border-radius: 15px;
-
 }
-
-
-
 
 .song h4 {
-
     color: white;
-
     margin-top: 15px;
-
     font-size: 1rem;
-
     font-weight: 500;
-
     text-align: center;
-
     text-transform: capitalize;
-
 }
-
-
-
 
 .like-icon {
-
     position: absolute;
-
     right: 25px;
-
     top: 25px;
-
     width: 40px;
-
     height: 40px;
-
     background: rgba(0, 0, 0, .55);
-
     border-radius: 50%;
-
     display: flex;
-
     justify-content: center;
-
     align-items: center;
-
     color: white;
-
     font-size: 22px;
-
     cursor: pointer;
-
     transition: .3s;
-
+    -webkit-tap-highlight-color: transparent;
 }
-
-
 
 .like-icon:hover {
-
     background: #2563eb;
-
     transform: scale(1.1);
-
 }
-
-
 
 .like-icon svg {
-
     color: #ef4444;
-
 }
 
-
-
-
-@media(max-width:768px) {
-
+/* Tablet */
+@media (max-width: 768px) {
     .song-con {
-
         padding: 20px;
-
-        position: absolute;
-
-        left: -20px;
-
-        top: 50px;
-
+        padding-bottom: 6rem;
     }
-
 
     .song-con h2 {
-
         font-size: 1.7rem;
-
+        text-align: center;
     }
-
 
     .songs {
-
-        grid-template-columns:
-            repeat(auto-fill, minmax(170px, 1fr));
-
+        grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
         gap: 18px;
-
     }
-
 
     .song img {
-
         height: 190px;
-
     }
-
 }
 
-
-
-
-@media(max-width:480px) {
-
+/* Phones */
+@media (max-width: 480px) {
     .song-con {
-
         padding: 15px;
-
-        position: absolute;
-
-        left: -20px;
-
-        top: 50px;
-
+        padding-bottom: 5.5rem;
     }
 
+    .song-con h2 {
+        font-size: 1.4rem;
+    }
 
     .songs {
-
-        grid-template-columns:
-            repeat(2, 1fr);
-
-        gap: 15px;
-
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
     }
-
 
     .song img {
-
         height: 150px;
-
     }
-
 
     .song h4 {
-
         font-size: .9rem;
-
     }
-
 
     .like-icon {
-
         width: 35px;
-
         height: 35px;
-
-        right: 20px;
-
-        top: 20px;
-
+        right: 15px;
+        top: 15px;
         font-size: 18px;
+    }
+}
 
+/* Very small phones */
+@media (max-width: 360px) {
+    .songs {
+        gap: 10px;
     }
 
+    .song img {
+        height: 130px;
+    }
+
+    .like-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
+    }
 }

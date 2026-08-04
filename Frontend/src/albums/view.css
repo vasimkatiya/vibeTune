@@ -11,354 +11,207 @@ body {
     background: #090e19;
 }
 
-
-
 .container {
-
     width: 100%;
-
     padding: 30px;
-
     padding-bottom: 6.3rem;
-
 }
-
-
-
 
 .upper {
-
     width: 100%;
-
     display: flex;
-
     align-items: center;
-
     gap: 30px;
-
     background: linear-gradient(135deg, #0f172a, #1e293b);
-
     padding: 30px;
-
     border-radius: 25px;
-
-    box-shadow:
-        0 10px 30px rgba(0, 0, 0, .35);
-
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
     margin-bottom: 35px;
-
 }
-
-
 
 .img img {
-
     width: 220px;
-
     height: 220px;
-
     object-fit: cover;
-
     border-radius: 20px;
-
-    box-shadow:
-        0 10px 25px rgba(0, 0, 0, .4);
-
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .4);
 }
 
-
-
+.info {
+    min-width: 0; /* lets long titles wrap/truncate instead of overflowing the flex row */
+}
 
 .info h2 {
-
     color: white;
-
     font-size: 2.5rem;
-
     text-transform: capitalize;
-
     font-weight: 600;
-
+    word-break: break-word;
 }
-
 
 .info p {
-
     color: #94a3b8;
-
     margin-top: 10px;
-
     font-size: 1rem;
-
 }
-
-
-
 
 .songs {
-
     display: grid;
-
-    grid-template-columns:
-        repeat(auto-fill, minmax(200px, 1fr));
-
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 25px;
-
 }
-
-
-
 
 .song {
-
     position: relative;
-
     background: linear-gradient(135deg, #0f172a, #1e293b);
-
     padding: 15px;
-
     border-radius: 18px;
-
     overflow: hidden;
-
-    box-shadow:
-        0 10px 30px rgba(0, 0, 0, .35);
-
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
     transition: .3s;
-
 }
-
 
 .song:hover {
-
     transform: translateY(-5px);
-
 }
-
-
-
 
 .song img {
-
     width: 100%;
-
     height: 220px;
-
     object-fit: cover;
-
     border-radius: 15px;
-
 }
-
-
-
 
 .song h4 {
-
     color: white;
-
     text-align: center;
-
     margin-top: 12px;
-
     font-size: 1rem;
-
     font-weight: 500;
-
     text-transform: capitalize;
-
 }
-
-
-
 
 .like-icon {
-
     position: absolute;
-
     right: 25px;
-
     top: 25px;
-
     width: 40px;
-
     height: 40px;
-
     border-radius: 50%;
-
     background: rgba(0, 0, 0, .55);
-
     display: flex;
-
     justify-content: center;
-
     align-items: center;
-
     color: white;
-
     font-size: 22px;
-
     cursor: pointer;
-
     transition: .3s;
-
+    -webkit-tap-highlight-color: transparent;
 }
-
 
 .like-icon:hover {
-
     background: #2563eb;
-
     transform: scale(1.1);
-
 }
-
 
 .like-icon svg {
-
     color: #ef4444;
-
 }
 
-
-
-
-@media(max-width:768px) {
-
+/* Tablet */
+@media (max-width: 768px) {
     .container {
-
         padding: 20px;
-
-        position: absolute;
-
-        left: -20px;
-
-        top: 50px;
     }
-
 
     .upper {
-
         flex-direction: column;
-
         text-align: center;
-
         padding: 25px;
-
     }
-
 
     .img img {
-
         width: 180px;
-
         height: 180px;
-
     }
-
 
     .info h2 {
-
         font-size: 2rem;
-
     }
-
 
     .songs {
-
-        grid-template-columns:
-            repeat(auto-fill, minmax(170px, 1fr));
-
+        grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
         gap: 18px;
-
     }
-
 }
 
-
-
-
-@media(max-width:480px) {
-
+/* Phones */
+@media (max-width: 480px) {
     .container {
-
         padding: 15px;
-
-        position: absolute;
-
-        left: -20px;
-
-        top: 50px;
-
     }
-
 
     .upper {
-
         border-radius: 18px;
-
+        padding: 20px;
+        gap: 15px;
     }
-
 
     .img img {
-
         width: 150px;
-
         height: 150px;
-
     }
-
 
     .info h2 {
-
         font-size: 1.5rem;
-
     }
 
+    .info p {
+        font-size: .9rem;
+    }
 
     .songs {
-
-        grid-template-columns:
-            repeat(2, 1fr);
-
+        grid-template-columns: repeat(2, 1fr);
         gap: 15px;
-
     }
-
 
     .song {
-
         padding: 10px;
-
     }
-
 
     .song img {
-
         height: 150px;
-
     }
-
 
     .song h4 {
-
         font-size: .85rem;
-
     }
-
 
     .like-icon {
-
         width: 35px;
-
         height: 35px;
-
         right: 18px;
-
         top: 18px;
-
         font-size: 18px;
+    }
+}
 
+/* Very small phones */
+@media (max-width: 360px) {
+    .img img {
+        width: 120px;
+        height: 120px;
     }
 
+    .info h2 {
+        font-size: 1.25rem;
+    }
+
+    .songs {
+        gap: 10px;
+    }
+
+    .song img {
+        height: 130px;
+    }
 }

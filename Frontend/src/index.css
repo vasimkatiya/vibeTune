@@ -1,21 +1,22 @@
+/* index.css */
 
-.app{
+.app {
     display: flex;
     flex-direction: row;
 }
 
-.con > h3{
+.con > h3 {
     text-align: center;
     text-transform: capitalize;
     color: white;
     padding: 0.7rem;
 }
 
-body{
+body {
     overflow-x: hidden;
 }
 
-main{
+main {
     position: relative;
     width: 80vw;
     height: auto;
@@ -26,11 +27,24 @@ main{
     align-items: center;
 }
 
+/* Tablet: sidebar likely shrinks or collapses here — adjust offset, don't just shrink width */
 @media (max-width: 768px) {
-    main{
-        top: 100px;
-        left: 50px;
+    main {
+        top: 90px;
+        left: 0;
         width: 100vw;
-        height: auto;
+        min-height: calc(100vh - 90px);
+        padding: 0 12px;
+    }
+}
+
+/* Phone: assume sidebar becomes a top navbar / hamburger and no longer pushes content */
+@media (max-width: 480px) {
+    main {
+        top: 70px;
+        left: 0;
+        width: 100vw;
+        min-height: calc(100vh - 70px);
+        padding: 0 10px;
     }
 }

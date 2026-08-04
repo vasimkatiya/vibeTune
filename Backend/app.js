@@ -14,7 +14,7 @@ const cors = require('cors')
 const app = express();
 
 app.use(cors({
-  origin:"https://vibetune83.netlify.app",
+  origin:"https://vibe-tune-omega.vercel.app",
   credentials:true
 }));
 

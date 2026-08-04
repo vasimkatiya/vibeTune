@@ -13,13 +13,6 @@ const Login = ({setrole}) => {
   const [load, setload] = useState(false)
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    
-  localStorage.removeItem('token');
-  localStorage.removeItem('role');
-
-  }, []);
   
 
   const handleSubmit = async (e) => {

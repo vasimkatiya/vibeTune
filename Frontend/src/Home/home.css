@@ -14,7 +14,7 @@ body {
 .song-con {
     width: 100%;
     padding: 30px;
-    padding-bottom: 6.3rem; /* keeps last row clear of the fixed .player bar */
+    padding-bottom: 6.3rem;
 }
 
 .song-con h2 {
@@ -90,7 +90,6 @@ body {
     color: #ef4444;
 }
 
-/* Tablet */
 @media (max-width: 768px) {
     .song-con {
         padding: 20px;
@@ -112,7 +111,6 @@ body {
     }
 }
 
-/* Phones */
 @media (max-width: 480px) {
     .song-con {
         padding: 15px;
@@ -145,7 +143,7 @@ body {
     }
 }
 
-/* Very small phones */
+
 @media (max-width: 360px) {
     .songs {
         gap: 10px;

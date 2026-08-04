@@ -47,7 +47,7 @@ body {
 }
 
 .album {
-    position: relative; /* so .delete can be positioned inside it if needed */
+    position: relative; 
     background: linear-gradient(135deg, #0f172a, #1e293b);
     border-radius: 20px;
     padding: 15px;
@@ -84,7 +84,6 @@ body {
     margin-top: 5px;
 }
 
-/* Tablet */
 @media (max-width: 768px) {
     .album-con {
         padding: 20px;
@@ -105,7 +104,6 @@ body {
     }
 }
 
-/* Phones */
 @media (max-width: 480px) {
     .album-con {
         padding: 15px;
@@ -140,7 +138,6 @@ body {
     }
 }
 
-/* Very small phones */
 @media (max-width: 360px) {
     .albums {
         grid-template-columns: repeat(2, 1fr);

@@ -38,7 +38,7 @@ body {
 }
 
 .info {
-    min-width: 0; /* lets long titles wrap/truncate instead of overflowing the flex row */
+    min-width: 0; 
 }
 
 .info h2 {
@@ -118,7 +118,6 @@ body {
     color: #ef4444;
 }
 
-/* Tablet */
 @media (max-width: 768px) {
     .container {
         padding: 20px;
@@ -145,7 +144,6 @@ body {
     }
 }
 
-/* Phones */
 @media (max-width: 480px) {
     .container {
         padding: 15px;
@@ -196,7 +194,6 @@ body {
     }
 }
 
-/* Very small phones */
 @media (max-width: 360px) {
     .img img {
         width: 120px;

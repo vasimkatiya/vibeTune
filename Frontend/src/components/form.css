@@ -1,26 +1,27 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
 }
 
-body{
+body {
     background: #090e19;
 }
 
-.con{
+.con {
     width: 100%;
     max-width: 500px;
-    background: linear-gradient(135deg,#0f172a,#1e293b);
+    background: linear-gradient(135deg, #0f172a, #1e293b);
     border-radius: 20px;
     padding: 30px;
-    box-shadow: 0 15px 40px rgba(0,0,0,.3);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, .3);
+    margin: 0 auto; 
 }
 
-.con > h2{
+.con > h2 {
     color: white;
     text-align: center;
     font-size: 2rem;
@@ -28,41 +29,41 @@ body{
     text-transform: capitalize;
 }
 
-.con form{
+.con form {
     display: flex;
     flex-direction: column;
     gap: 18px;
 }
 
-.con input[type="text"]{
+.con input[type="text"] {
     width: 100%;
     height: 50px;
     padding: 0 15px;
     border: 1px solid #d1d5db;
     border-radius: 10px;
     outline: none;
-    font-size: 15px;
+    font-size: 16px;
     transition: .25s;
 }
 
-.con input[type="text"]:focus{
+.con input[type="text"]:focus {
     border-color: #2563eb;
-    box-shadow: 0 0 0 3px rgba(37,99,235,.15);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, .15);
 }
 
-.con form div{
+.con form div {
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
-.con label{
+.con label {
     color: white;
     font-size: 15px;
     font-weight: 500;
 }
 
-.con input[type="file"]{
+.con input[type="file"] {
     background: white;
     padding: 10px;
     border-radius: 10px;
@@ -70,7 +71,7 @@ body{
     border: 1px solid #d1d5db;
 }
 
-.con input[type="file"]::file-selector-button{
+.con input[type="file"]::file-selector-button {
     background: #2563eb;
     color: white;
     border: none;
@@ -81,11 +82,11 @@ body{
     transition: .3s;
 }
 
-.con input[type="file"]::file-selector-button:hover{
+.con input[type="file"]::file-selector-button:hover {
     background: #1d4ed8;
 }
 
-.con button{
+.con button {
     width: 100%;
     height: 50px;
     border: none;
@@ -97,62 +98,69 @@ body{
     cursor: pointer;
     transition: .3s;
     text-transform: capitalize;
+    -webkit-tap-highlight-color: transparent;
 }
 
-.con button:hover{
+.con button:hover {
     background: #1d4ed8;
 }
 
-.con button:disabled{
+.con button:active {
+    transform: scale(0.98);
+}
+
+.con button:disabled {
     background: #93c5fd;
     cursor: not-allowed;
 }
 
-/* Tablet */
-
-@media (max-width:768px){
-
-    .con{
+@media (max-width: 768px) {
+    .con {
         max-width: 420px;
         padding: 25px;
-                    position: absolute;
-
-    left: -20px;
-
-    top: 50px;
     }
 
-    .con h3{
+    .con > h2 {
         font-size: 1.7rem;
     }
-
 }
 
-/* Mobile */
-
-@media (max-width:480px){
-
-    .con{
-        width: 95%;
+@media (max-width: 480px) {
+    .con {
+        width: 92%;
         padding: 20px;
-                    position: absolute;
-
-    left: -20px;
-
-    top: 50px;
     }
 
-    .con h3{
-        font-size: 1.5rem;
+    .con > h2 {
+        font-size: 1.4rem;
     }
 
     .con input[type="text"],
-    .con button{
+    .con button {
         height: 46px;
     }
 
-    .con input[type="file"]{
-        font-size: 14px;
+    .con input[type="file"] {
+        font-size: 13px;
+        padding: 8px;
     }
 
+    .con input[type="file"]::file-selector-button {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 360px) {
+    .con {
+        padding: 16px;
+    }
+
+    .con > h2 {
+        font-size: 1.25rem;
+    }
+
+    .con label {
+        font-size: 13px;
+    }
 }

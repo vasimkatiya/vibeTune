@@ -7,6 +7,10 @@
     font-family: "Poppins", sans-serif;
 }
 
+body {
+    background: #090e19;
+}
+
 .profile {
     width: 380px;
     min-height: 450px;
@@ -17,8 +21,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 0 auto; 
 }
-
 
 .up {
     width: 100%;
@@ -38,7 +42,6 @@
     background: white;
 }
 
-
 .down {
     width: 100%;
     padding: 30px;
@@ -52,11 +55,15 @@
     color: white;
     font-size: 1.8rem;
     text-transform: capitalize;
+    text-align: center;
+    word-break: break-word; 
 }
 
 .down p {
     color: #cbd5e1;
     font-size: 15px;
+    text-align: center;
+    word-break: break-word;
 }
 
 .down p:last-of-type {
@@ -67,7 +74,6 @@
     text-transform: capitalize;
     font-weight: 500;
 }
-
 
 .down button {
     margin-top: 20px;
@@ -81,52 +87,76 @@
     font-weight: 600;
     cursor: pointer;
     transition: .3s;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .down button:hover {
     background: #dc2626;
 }
 
-
-
-@media(max-width:768px) {
-
-    .profile {
-        width: 350px;
-        position: absolute;
-
-        left: -20px;
-
-        top: 50px;
-    }
-
+.down button:active {
+    transform: scale(0.97);
 }
 
-
-
-@media(max-width:480px) {
-
+@media (max-width: 768px) {
     .profile {
         width: 90%;
-        min-height: 400px;
-        position: absolute;
+        max-width: 350px;
+    }
+}
 
-        left: -8px;
-
-        top: 50px;
+@media (max-width: 480px) {
+    .profile {
+        width: 92%;
+        min-height: auto;
     }
 
     .up {
-        height: 160px;
+        height: 150px;
     }
 
     .up img {
-        width: 110px;
-        height: 110px;
+        width: 100px;
+        height: 100px;
+        border-width: 4px;
+    }
+
+    .down {
+        padding: 22px;
+        gap: 10px;
     }
 
     .down h2 {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
 
+    .down p {
+        font-size: 13px;
+    }
+
+    .down button {
+        width: 160px;
+        height: 42px;
+        font-size: 14px;
+        margin-top: 14px;
+    }
+}
+
+@media (max-width: 360px) {
+    .up {
+        height: 130px;
+    }
+
+    .up img {
+        width: 85px;
+        height: 85px;
+    }
+
+    .down h2 {
+        font-size: 1.2rem;
+    }
+
+    .down button {
+        width: 100%;
+    }
 }

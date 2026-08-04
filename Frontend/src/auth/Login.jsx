@@ -28,7 +28,6 @@ const Login = ({setrole}) => {
         password,
       });
 
-      console.log(res.data);
 
       localStorage.setItem("token",res.data.token);
       localStorage.setItem('role',res.data.user.role);
@@ -45,7 +44,8 @@ const Login = ({setrole}) => {
         error.response?.data?.message || error.message || "Something went wrong."
       );
     }finally{
-        setload(false)
+        setload(false);
+        console.log(load)
     }
   };
 

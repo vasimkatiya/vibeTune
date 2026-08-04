@@ -30,7 +30,7 @@ const Signup = ({ setrole }) => {
         role,
       });
 
-      console.log(res.data);
+
 
       localStorage.setItem('role',res.data.newUser.role);
       setrole(localStorage.getItem('role'));

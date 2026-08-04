@@ -3,6 +3,7 @@ import api from "../config/axiosConfig";
 import { errorToast } from "../config/tostifyConfig.js";
 import { Link, useNavigate } from "react-router-dom";
 import './form.css'
+import { useEffect } from "react";
 
 const Login = ({setrole}) => {
 
@@ -12,6 +13,14 @@ const Login = ({setrole}) => {
   const [load, setload] = useState(false)
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    
+  localStorage.removeItem('token');
+  localStorage.removeItem('role');
+
+  }, []);
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();

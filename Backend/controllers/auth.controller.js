@@ -74,13 +74,17 @@ exports.loginController = async (req, res) => {
 
         const token = jwt.sign(
             { id: findUser._id, role: findUser.role },
-            process.env.JWT
+            process.env.JWT,
+            {
+                expiresIn: "14d"
+            }
         );
 
         res.cookie("token", token, {
             httpOnly: true,
             secure: true,
-            sameSite: "none"
+            sameSite: "none",
+            maxAge: 14 * 24 * 60 * 60 * 1000
         });
 
         res.status(200).json({
